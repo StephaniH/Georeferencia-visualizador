@@ -1,0 +1,61 @@
+<div class="container text-center">
+
+    <div class="form-group">
+        <input type="date" [value]="fechaConsulta" #fechaTrafico class="">
+        <button class="btn btn-primary form" (click)="buscarFecha($event, fechaTrafico.value )" [disabled]="activarFecha">Buscar</button>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="paintLine" id="paintLine"
+                (change)="pintarLineas($event)">
+            <label class="form-check-label" for="paintLine">
+                Pintar lineas
+            </label>
+        </div>
+
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="opcionMostrar" #climaTrafico value="climaTrafico" id="opcion1" (click)="mostrarDato( climaTrafico.value )">
+            <label class="form-check-label" for="opcion1">
+                Mostrar clima y tráfico
+            </label>
+            <input class="form-check-input" type="radio" name="opcionMostrar" #clima value="clima" id="opcion2" (click)="mostrarDato( clima.value )">
+            <label class="form-check-label" for="opcion2">
+                Mostrar clima
+            </label>
+            <input class="form-check-input" type="radio" name="opcionMostrar" #trafico value="trafico" id="opcion3" (click)="mostrarDato( trafico.value )">
+            <label class="form-check-label" for="opcion3">
+                Mostrar tráfico
+            </label>
+        </div>
+
+
+    </div>
+    <form>
+    <div class="row ">
+        <div class="col">
+            <div class="card ">
+                <i class="fas fa-chart-area"></i> TRAFICO Y CLIMA CDMX
+                <div class="card-body" id="mapid"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="label">
+            Horas - Trafico
+        </label>
+        <input type="time" class="form-control col-md-2" [value]="horariotrafico" formControl="timeCtrl" [readonly]="true">
+        <br>
+        <label class="label">
+            Horas - Clima
+        </label>
+        <input type="time" class="form-control col-md-2" [value]="horarioclima" formControl="timeCtrl" [readonly]="true">
+        <br>
+        <button class="btn btn-primary form col-md-2" (click)="controlAtras($event)" [disabled]="activarBtn"><span
+                class="material-icons">skip_previous</span></button>
+        <button class="btn btn-primary form col-md-2" (click)="reproducir($event)" [disabled]="activarBtn"><span
+                class="material-icons">{{ nombrePlayPausa }}</span></button>
+        <button class="btn btn-primary form col-md-2" (click)="controlAdelante($event)" [disabled]="activarBtn"><span
+                class="material-icons">skip_next</span></button>
+    </div>
+</form>
+</div>
